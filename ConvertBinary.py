@@ -1,7 +1,8 @@
 import numpy as np
 import flopy
 
-print("Running ConvertBinary!")
+print("Running ConvertBinary.py! Supper Cool!")
+
 # open the binary file
 fpth = 'model.sbs'
 sobj = flopy.utils.HeadFile(fpth, text='Z DISPLACEMENT')
@@ -19,6 +20,7 @@ zd = sobj.get_alldata(mflay=0)
 # zd is a 3D numpy array with a shape of (nlay, nrow, ncol)
 # since np.savetxt choke on > 2D array, so we slice the  3D array into 2D
 
+print("Saving text data!")
 with open('sub.txt', 'w') as outfile:
     for slice_2d in zd:
         np.savetxt(outfile, slice_2d)
